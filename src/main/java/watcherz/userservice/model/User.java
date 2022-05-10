@@ -3,6 +3,7 @@ package watcherz.userservice.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -14,14 +15,9 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Type(type="org.hibernate.type.UUIDCharType")
     UUID userId;
 
     @Column(unique = true, nullable = false)
     String email;
-
-    @Column(nullable = false)
-    String password;
-
-    @Column(nullable = false)
-    Role role;
 }
